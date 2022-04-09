@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: example-app
+spec:
+  selector:
+    matchLabels:
+      app: pi-temp
+  updateStrategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: pi-temp
+    spec:
+      containers:
+        - name: pi-temp
+          image: docker.io/sebastiangaiser/pi-temp:v0.1.0
+          ports:
+            - name: pi-temp
+              containerPort: 8080
+          env:
+            - name: FILE
+              value: "/opt/vc/bin/vcgencmd measure_temp"
+          securityContext:
+            privileged: true
+            capabilities:
+              add: []
+      tolerations:
+        - key: "raspberry-pi"
+          operator: "Equal"
+          value: "true"
+          effect: "NoSchedule"

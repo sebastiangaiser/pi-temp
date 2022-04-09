@@ -1,0 +1,9 @@
+.editorconfig
+.envrc
+.gitignore
+Makefile
+README.md
+test.txt
+kubernetes-manifests/
+.idea/
+*.iml

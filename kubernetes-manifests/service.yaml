@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: pi-temp
+  labels:
+    app: pi-temp
+spec:
+  selector:
+    app: pi-temp
+  ports:
+    - name: pi-temp
+      port: 8080

@@ -1,0 +1,10 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: pi-temp
+spec:
+  selector:
+    matchLabels:
+      app: pi-temp
+  podMetricsEndpoints:
+    - port: pi-temp
